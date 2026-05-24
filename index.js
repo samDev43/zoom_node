@@ -22,5 +22,8 @@ app.use('/api/auth/action', actionRoute);
 app.use('/api/auth', signupRoute);
 connectDB();
 
-module.exports = app;
+// module.exports = app;
+app.listen(envObj.PORT, () => {
+    console.log(`Server is running on port ${envObj.PORT}`);
+});
 

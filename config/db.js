@@ -32,7 +32,7 @@ async function connectDB() {
     }
 
     if (!cached.promise) {
-        cached.promise = mongoose.connect(envObj.MONGODB_URL).then((mongoose) => {
+        cached.promise = mongoose.connect(envObj.MONGODBURL).then((mongoose) => {
             return mongoose;
         });
     }
