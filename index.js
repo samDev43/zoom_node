@@ -1,4 +1,4 @@
-const cor = require('cors');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const connectDB = require('./config/db')
@@ -7,10 +7,13 @@ const actionRoute = require("./route/actionauth");
 const envObj = require("./config/env");
 
 app.use(express.json());
-app.use(cor(
+app.use(cors(
     {
-        origin: "http://localhost:5173",
-        methods: ["GET,POST,PUT, DELETE"],
+        origin: [
+            "http://localhost:5173",
+            "https://zoom-react-three.vercel.app"
+        ],
+        methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
     }
 ));
@@ -18,8 +21,6 @@ app.use(cor(
 app.use('/api/auth/action', actionRoute);
 app.use('/api/auth', signupRoute);
 connectDB();
-app.listen(envObj.PORT, () => {
-    console.log(`Server is running on port ${envObj.PORT}`);
-});
 
+module.exports = app;
 
