@@ -1,0 +1,18 @@
+const mongoose = require("mongoose");
+const envObj = require("./env");
+const express = require("express");
+
+const app = express();
+
+const connectDB = async () => {    
+    console.log(envObj.PORT);
+    
+    try {   
+        const conn = await mongoose.connect(envObj.MONGODBURL);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    }catch (error){
+        console.log("Error connecting to database: ", error);   
+    }
+}
+
+module.exports = connectDB;
