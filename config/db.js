@@ -33,6 +33,7 @@ async function connectDB() {
 
     if (!cached.promise) {
         cached.promise = mongoose.connect(envObj.MONGODBURL).then((mongoose) => {
+            console.log("MongoDB Connected");
             return mongoose;
         });
     }
